@@ -3,6 +3,7 @@ import App from "../App";
 import Favourite from "../components/favourite/Favourite";
 import History from "../components/history/History";
 import Home from "../components/home/Home";
+import CityTable from "../components/cityTable/CityTable";
 
 export const router = createBrowserRouter([
     {
@@ -12,6 +13,10 @@ export const router = createBrowserRouter([
             {
                 path: '',
                 element: <Home/>
+            },
+            {
+                path: 'cityTable',
+                element: <CityTable/>
             },
             {
                 path: 'favoriteCity',

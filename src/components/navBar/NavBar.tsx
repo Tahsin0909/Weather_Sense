@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import { IoMdHome } from "react-icons/io";
 import { MdFavorite } from "react-icons/md";
 import { FaHistory } from "react-icons/fa";
+import { BiSolidCity } from "react-icons/bi";
 const NavBar: React.FC = () => {
     // state for drawer toogle 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -30,21 +30,28 @@ const NavBar: React.FC = () => {
                         <ul className='flex flex-col gap-4 flex-grow  text-lg py-4' >
                             <NavLink to={`/`} onClick={handleDrawer}
                                 className={({ isActive, isPending }) => isActive ? "text-blue-700" : isPending ? "pending" : ""}>
-                                <div className='flex gap-1 items-center'>
-                                    <IoMdHome/>
+                                <div className='flex gap-1 items-center hover:animate-pulse'>
+                                    <IoMdHome />
                                     Home
+                                </div>
+                            </NavLink>
+                            <NavLink to={`/cityTable`} onClick={handleDrawer}
+                                className={({ isActive, isPending }) => isActive ? "text-blue-700" : isPending ? "pending" : ""}>
+                                <div className='flex gap-1 items-center hover:animate-pulse'>
+                                    <BiSolidCity />
+                                    City Table
                                 </div>
                             </NavLink>
                             <NavLink to={`/favoriteCity`} onClick={handleDrawer}
                                 className={({ isActive, isPending }) => isActive ? "text-blue-700" : isPending ? "pending" : ""}>
-                                <div className='flex gap-1 items-center'>
+                                <div className='flex gap-1 items-center hover:animate-pulse'>
                                     <MdFavorite />
-                                    Favorite
+                                    Favorite City
                                 </div>
                             </NavLink>
                             <NavLink to={`/history`} onClick={handleDrawer}
                                 className={({ isActive, isPending }) => isActive ? "text-blue-700" : isPending ? "pending" : ""}>
-                                <div className='flex gap-1 items-center'>
+                                <div className='flex gap-1 items-center hover:animate-pulse'>
                                     <FaHistory />
                                     History
                                 </div>

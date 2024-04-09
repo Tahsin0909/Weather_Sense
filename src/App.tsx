@@ -1,9 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Outlet } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import Home from './components/home/Home';
 import NavBar from './components/navBar/NavBar';
 function App() {
   return (
@@ -16,7 +13,7 @@ function App() {
         height: '100vh'
        }}
     >
-      <div className='border-2 border-red-600 lg:px-10 md:px-8 px-4 pt-4'>
+      <div className='lg:px-10 md:px-8 px-4 pt-4 flex md:flex-row flex-col md:gap-4 gap-2'>
         <NavBar />
         <Outlet />
       </div>

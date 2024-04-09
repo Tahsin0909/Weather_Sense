@@ -4,7 +4,7 @@ import { WEatherContext } from '../../weatherContext/WEatherContext';
 const CityTable = () => {
     const contextValue = useContext(WEatherContext);
     if (!contextValue || !contextValue.citiesData) {
-        // Handle the case where contextValue is undefined or citiesData is undefined
+        // Handle the case where contextValue is undefined 
         return <div>No city data available</div>;
     }
     return (
