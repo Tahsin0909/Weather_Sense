@@ -1,24 +1,23 @@
-// import { Children, createContext } from "react";
+import React, { ReactNode, createContext } from "react";
 
-// const WEatherContext = createContext()
-// const ContextApi = (Children) =>{
-//     const values = {
-//         name: 'Tahsin'
-//     }
-//     return (
-//         <WEatherContext.Provider value={values}>
-//             {Children}
-//         </WEatherContext.Provider>
-//     )
-// }
-import React from 'react';
+// define weather context type 
+interface weatherContextType {
+    citiesData: Array<any>;
+}
+export const WEatherContext = createContext<weatherContextType | undefined >(undefined)
 
-const WEatherContext = () => {
+// define context api type 
+interface ContextApiProps {
+    children: ReactNode;
+}
+export const ContextApi: React.FC<ContextApiProps> = ({children})=>{
+    const citiesData = [1, 2, 3]
+    const values: weatherContextType = {
+        citiesData
+    }
     return (
-        <div>
-            <p>Demo</p>
-        </div>
-    );
-};
-
-export default WEatherContext;
+        <WEatherContext.Provider value={values}>
+            {children}
+        </WEatherContext.Provider>
+    )
+}

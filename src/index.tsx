@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, RouterProvider } from 'react-router-dom';
 import { router } from './Router/Router';
+import { ContextApi } from './weatherContext/WEatherContext';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
+    <ContextApi>
     <RouterProvider router={router} />
+    </ContextApi>
   </React.StrictMode>
 );
 
