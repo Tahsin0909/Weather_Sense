@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import CityTable from "../components/cityTable/CityTable";
 import Favourite from "../components/favourite/Favourite";
 import History from "../components/history/History";
+import Home from "../components/home/Home";
 
 export const router = createBrowserRouter([
     {
@@ -10,8 +10,8 @@ export const router = createBrowserRouter([
         element: <App/>,
         children:[
             {
-                path: 'cityWether',
-                element: <CityTable/>
+                path: '',
+                element: <Home/>
             },
             {
                 path: 'favoriteCity',

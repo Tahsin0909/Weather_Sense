@@ -1,10 +1,10 @@
-import NavBar from "../navBar/NavBar";
+import CityTable from "../cityTable/CityTable";
 
 const Home = () => {
     return (
         <div>
             <p>Main Home</p>
-            <NavBar/>
+            <CityTable/>
         </div>
     );
 };
