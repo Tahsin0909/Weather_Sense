@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { FcHome } from "react-icons/fc";
+import { IoMdHome } from "react-icons/io";
+import { MdFavorite } from "react-icons/md";
+import { FaHistory } from "react-icons/fa";
 const NavBar: React.FC = () => {
     // state for drawer toogle 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -21,22 +23,31 @@ const NavBar: React.FC = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 min-h-full glass text-white">
-                        <img src="https://i.ibb.co/g7XJL4B/Weather-1-removebg-preview.png" alt="" />
+                    <ul className="menu p-4 md:w-80 w-[70vw] min-h-full glass text-white">
+                        <img className='lg:w-72 md:w-60 w-48' src="https://i.ibb.co/g7XJL4B/Weather-1-removebg-preview.png" alt="weather sense logo" />
                         <hr />
                         {/* Sidebar content here */}
-                        <ul className='flex flex-col gap-4 flex-grow border-2 border-red-600 text-lg py-4' >
+                        <ul className='flex flex-col gap-4 flex-grow  text-lg py-4' >
                             <NavLink to={`/`} onClick={handleDrawer}
                                 className={({ isActive, isPending }) => isActive ? "text-blue-700" : isPending ? "pending" : ""}>
-                                <FcHome /> Home
+                                <div className='flex gap-1 items-center'>
+                                    <IoMdHome/>
+                                    Home
+                                </div>
                             </NavLink>
                             <NavLink to={`/favoriteCity`} onClick={handleDrawer}
                                 className={({ isActive, isPending }) => isActive ? "text-blue-700" : isPending ? "pending" : ""}>
-                                Favorite
+                                <div className='flex gap-1 items-center'>
+                                    <MdFavorite />
+                                    Favorite
+                                </div>
                             </NavLink>
                             <NavLink to={`/history`} onClick={handleDrawer}
                                 className={({ isActive, isPending }) => isActive ? "text-blue-700" : isPending ? "pending" : ""}>
-                                History
+                                <div className='flex gap-1 items-center'>
+                                    <FaHistory />
+                                    History
+                                </div>
                             </NavLink>
                         </ul>
                         <p>Copyright @2024 reserved by Tahsin Zaman</p>
