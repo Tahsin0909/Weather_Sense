@@ -1,42 +1,24 @@
-import React, { useState } from 'react';
-interface Location {
-    latitude: number;
-    longitude: number;
-}
-interface Error {
-    error: string
-}
-const Home = () => {
-    const [userLocation, setUserLocation] = useState<Location | null>(null)
-    const [error, setError] = useState<Error | null>(null)
+import { useContext } from "react";
+import { WEatherContext } from "../../weatherContext/WEatherContext";
 
-    const getUserLocation = () => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const { latitude, longitude } = position.coords;
-                    setUserLocation({ latitude, longitude });
-                },
-                (error) => {
-                    // display an error if we cant get the users position
-                    setError({ error: 'Error getting user location' });
-                    setUserLocation({ latitude: 22.739 , longitude:90.1232 });
-                }
-            )
-        }
-        else {
-            console.error('Geolocation is not supported by this browser.');
-            setUserLocation({ latitude: 22.739 , longitude:90.1232 });
-        }
-    };
-    if(!userLocation){
-        getUserLocation()
+const Home = () => {
+    const contextValue = useContext(WEatherContext);
+    if (!contextValue) {
+        // Handle the case when contextValue is undefined
+        return <div>Loading...</div>;
     }
+    const { citiesData,
+        userLocation,
+        locationError,
+        weatherData,
+        isPending,
+        getUserLocation } = contextValue;
+console.log(weatherData);
     return (
         <div>
             <button className='btn' onClick={() => getUserLocation()}>Location</button>
             {
-                error && <p>{error.error}</p>
+                // locationError && <p>{locationError?.locationError}</p>
             }
             {userLocation && (
                 <div>
