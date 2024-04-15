@@ -11,9 +11,7 @@ const Home = () => {
         userLocation,
         locationError,
         CurrentWeatherData,
-        ForecastData,
         getUserLocation } = contextValue;
-    console.log(ForecastData);
     if (!userLocation) {
         getUserLocation()
     }
