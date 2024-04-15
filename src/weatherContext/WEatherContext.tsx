@@ -1,11 +1,17 @@
-import React, { ReactNode, createContext, useState } from "react";
+import React, { ReactNode, createContext, useEffect, useState } from "react";
 import { useQuery } from '@tanstack/react-query'
 // define weather context type 
 interface weatherContextType {
     citiesData: Array<any>;
-    ForecastData: Array<any>;
-    CurrentWeatherData:  {
+    CurrentWeatherData: {
         name: string;
+        weather: Array<any>;
+        main: {
+            temp: number;
+            humidity: number;
+
+
+        } | null;
     } | null;
     userLocation: {
         latitude: number;
@@ -18,6 +24,10 @@ interface Location {
     latitude: number;
     longitude: number;
 }
+interface ForecastData{
+    ForecastData: Array<any> ;
+}
+
 interface LocationError {
     locationError: string | ' '
 }
@@ -33,6 +43,7 @@ interface ContextApiProps {
 export const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
     const [userLocation, setUserLocation] = useState<Location | null>(defaultLocation)
     const [locationError, setLocationError] = useState<LocationError | ' '>(' ')
+    const [forecastData, setForecastData] = useState<ForecastData | null>(null)
 
     const getUserLocation = () => {
         if (navigator.geolocation) {
@@ -59,24 +70,28 @@ export const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
         queryFn: async () => {
             const WeatherRes = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=22.739&lon=90.1232&appid=8b76fe04b354cc9680cc14eda701d843`);
             const CurrentWeather = await WeatherRes.json()
-            return  CurrentWeather
+            return CurrentWeather
         }
     })
     const { isPending: ForecastISPending, error: ForecastError, data: ForecastData } = useQuery({
         queryKey: ['weatherData'],
         queryFn: async () => {
             const ForecastRes = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${userLocation?.latitude}&lon=${userLocation?.longitude}&appid=8b76fe04b354cc9680cc14eda701d843`);
-            const Forecast= await ForecastRes.json()
+            const Forecast = await ForecastRes.json()
             return Forecast
         }
     })
+    useEffect(() => {
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${userLocation?.latitude}&lon=${userLocation?.longitude}&appid=8b76fe04b354cc9680cc14eda701d843`)
+        .then(res => res.json())
+        .then(data => setForecastData(data))
+    }, [userLocation])
     const citiesData = [1, 2, 3]
     const values: weatherContextType = {
         citiesData,
         userLocation,
         locationError,
         CurrentWeatherData,
-        ForecastData,
         getUserLocation
     }
     return (
