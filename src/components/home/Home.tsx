@@ -7,13 +7,16 @@ const Home = () => {
         // Handle the case when contextValue is undefined
         return <div>Loading...</div>;
     }
-    const { citiesData,
+    const {         citiesData,
         userLocation,
         locationError,
-        weatherData,
-        isPending,
+        CurrentWeatherData,
+        ForecastData,
         getUserLocation } = contextValue;
-console.log(weatherData);
+    console.log(CurrentWeatherData);
+    if (!userLocation) {
+        getUserLocation()
+    }
     return (
         <div>
             <button className='btn' onClick={() => getUserLocation()}>Location</button>
@@ -24,6 +27,9 @@ console.log(weatherData);
                 <div>
                     <h2>User Location</h2>
                     <p>Latitude: {userLocation.latitude}</p>
+                    <p>Longitude: {userLocation.longitude}</p>
+                    <p>Longitude: {CurrentWeatherData?.name}</p>
+                    <p>Longitude: {userLocation.longitude}</p>
                     <p>Longitude: {userLocation.longitude}</p>
                 </div>
             )}
