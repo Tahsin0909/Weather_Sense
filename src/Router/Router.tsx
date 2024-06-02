@@ -1,9 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Favourite from "../components/favourite/Favourite";
-import History from "../components/history/History";
-import Home from "../components/home/Home";
-import CityTable from "../components/cityTable/CityTable";
+import Payslip from "../components/payslip/Payslip";
+import PayrollItems from "../components/payrollItems/PayrollItems";
+import EmployeeSalary from "../components/home/EmployeeSalary";
 
 export const router = createBrowserRouter([
     {
@@ -12,19 +11,15 @@ export const router = createBrowserRouter([
         children:[
             {
                 path: '',
-                element: <Home/>
+                element: <EmployeeSalary/>
             },
             {
-                path: 'cityTable',
-                element: <CityTable/>
+                path: 'payslip',
+                element: <Payslip/>
             },
             {
-                path: 'favoriteCity',
-                element: <Favourite/>
-            },
-            {
-                path: 'History',
-                element: <History/>
+                path: 'payrollItems',
+                element: <PayrollItems/>
             }
         ]
     }

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { IoMdHome } from "react-icons/io";
 import { MdFavorite } from "react-icons/md";
-import { FaHistory } from "react-icons/fa";
 import { BiSolidCity } from "react-icons/bi";
 const NavBar: React.FC = () => {
     // state for drawer toogle 
@@ -23,8 +22,8 @@ const NavBar: React.FC = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <ul className="menu p-4 md:w-80 w-[70vw] min-h-full glass text-white">
-                        <img className='lg:w-72 md:w-60 w-48' src="https://i.ibb.co/g7XJL4B/Weather-1-removebg-preview.png" alt="weather sense logo" />
+                    <ul className="menu p-4 md:w-80 w-[70vw] min-h-full bg-white text-black">
+                        <img src="https://i.ibb.co/hF5G0d0/Black-And-White-Aesthetic-Minimalist-Modern-Simple-Typography-Coconut-Cosmetics-Logo-1-removebg-prev.png" alt="" />
                         <hr />
                         {/* Sidebar content here */}
                         <ul className='flex flex-col gap-4 flex-grow  text-lg py-4' >
@@ -32,28 +31,21 @@ const NavBar: React.FC = () => {
                                 className={({ isActive, isPending }) => isActive ? "text-blue-700" : isPending ? "pending" : ""}>
                                 <div className='flex gap-1 items-center hover:animate-pulse'>
                                     <IoMdHome />
-                                    Home
+                                    Employee Salary
                                 </div>
                             </NavLink>
-                            <NavLink to={`/cityTable`} onClick={handleDrawer}
+                            <NavLink to={`/payslip`} onClick={handleDrawer}
                                 className={({ isActive, isPending }) => isActive ? "text-blue-700" : isPending ? "pending" : ""}>
                                 <div className='flex gap-1 items-center hover:animate-pulse'>
                                     <BiSolidCity />
-                                    City Table
+                                    Payslip
                                 </div>
                             </NavLink>
-                            <NavLink to={`/favoriteCity`} onClick={handleDrawer}
+                            <NavLink to={`/payrollItems`} onClick={handleDrawer}
                                 className={({ isActive, isPending }) => isActive ? "text-blue-700" : isPending ? "pending" : ""}>
                                 <div className='flex gap-1 items-center hover:animate-pulse'>
                                     <MdFavorite />
-                                    Favorite City
-                                </div>
-                            </NavLink>
-                            <NavLink to={`/history`} onClick={handleDrawer}
-                                className={({ isActive, isPending }) => isActive ? "text-blue-700" : isPending ? "pending" : ""}>
-                                <div className='flex gap-1 items-center hover:animate-pulse'>
-                                    <FaHistory />
-                                    History
+                                    Payroll Items
                                 </div>
                             </NavLink>
                         </ul>
