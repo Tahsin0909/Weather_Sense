@@ -7,7 +7,10 @@ function App() {
     <div className=''>
       <div className='lg:px-10 md:px-8 px-4 pt-4 flex md:flex-row flex-col md:gap-4 gap-2'>
         <NavBar />
+        <div>
         <Outlet />
+        </div>
+
       </div>
     </div>
   );

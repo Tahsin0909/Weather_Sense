@@ -18,9 +18,6 @@ const VerticalForm = <
   onSubmit,
   formClass,
 }: VerticalFromProps<TFormValues>) => {
-  /*
-   * form methods
-   */
   const methods = useForm<TFormValues>({ defaultValues, resolver });
   const {
     handleSubmit,
@@ -43,6 +40,7 @@ const VerticalForm = <
                     control,
                   },
                 })
+                
               : child;
           })
         : children}
